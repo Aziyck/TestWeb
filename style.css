@@ -1,0 +1,135 @@
+*{
+	margin: 0;
+	padding:  0;
+	box-sizing: border-box;
+}
+
+body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background-color: #f6f6f6;
+}
+
+img{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.card-hover{
+  --hovered:0;
+  transform: rotate(0deg);
+  position: absolute;
+  background-color: transparent;
+  width: 390px;
+  height: 580px;
+  perspective: 1000px;
+}
+
+  .card {
+    transform: rotate(0deg);
+    position: absolute;
+    background-color: transparent;
+    width: 390px;
+    height: 580px;
+    perspective: 1000px;
+  }
+  
+  #main{
+    --hovered:0;
+  }
+  #main:hover{
+    --hovered:1;
+  }
+
+  .inner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 3s ease;
+    transform-style: preserve-3d;
+    border-radius: 35px 0px;
+  }
+  
+  .inner-anim0{
+    transform:  translateX(500px) translateZ(-500px) translateY(-600px) rotateY(140deg) rotateZ(10deg) rotateX(60deg); 
+    transition: transform 3s ease;
+  }
+
+  .inner-anim1{
+    transform:  translateX(300px) translateY(250px) rotateY(80deg) rotateZ(-50deg) rotateX(-30deg); 
+    transition: transform 3s ease;
+  }
+
+  .inner-anim2{
+    transform:  translateX(-700px) translateZ(-200px) translateZ(-100px) rotateY(-110deg) rotateZ(170deg) rotateX(10deg) rotateZ(30deg);
+    transition: transform 3s ease;
+  }
+
+  .card-hover:hover .inner{
+    transform:  rotateY(-155deg) rotateZ(-25deg) scale(1.2);
+  }
+
+  .face, .back{
+    backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+    background-color: black;
+  }
+
+   .face .face-text, .back .back-text{
+    color: black;
+  }
+
+  .face {
+    transform: translateZ(5px);
+    box-shadow: 12px 12px 5px #0000001c ;
+  }
+  
+  .back {
+    transform: rotateX(180deg);
+    box-shadow: -12px -12px 5px #0000001c ;
+  }
+
+  .back .back-text{
+    color: black;
+    background-color: #fff;
+    transform: rotateZ(180deg);
+  }
+
+  .side-right, .side-left, .side-bottom, .side-top{
+    position: absolute;
+    background-color: #ef453c;
+  }
+
+   .side-right{
+    transform: rotateY(90deg) translateZ(-2.5px) translateX(-2.5px);
+    width: 5px;  
+    height: 580px;
+  }
+
+  .side-left{
+    transform: rotateY(90deg) translateZ(387px) translateX(-2.5px);
+    width: 5px;
+    height: 580px;
+  }
+
+  .side-top{
+    transform:  rotateZ(90deg) rotateY(90deg) translateZ(-195px) translateX(-2.5px) translateY(-192.5px);
+    width: 5px;
+    height: 390px;
+  }
+
+  .side-bottom{
+    transform:  rotateZ(90deg) rotateY(90deg) translateZ(385px) translateX(-2.5px) translateY(-192.5px);
+    width: 5px;
+    height: 390px;
+  }
+  
+

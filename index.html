@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip-card</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card" style="transform: rotate(6deg);">
+    <div class="inner">
+
+      <div class="face" style="background-color: #131300;">
+        <img src="cards\back.png" alt="card back">
+      </div>
+      
+      <div class="back" style="background-color: #131300;">
+        <img src="cards\2.png" alt="card front">
+      </div>
+
+      <div class="side-right"></div>
+      <div class="side-left"></div>
+      <div class="side-top"></div>
+      <div class="side-bottom"></div>
+      
+    </div>
+  </div>
+
+
+  <div class="card" style="transform: rotate(2deg);">
+    <div class="inner">
+
+      <div class="face" style="background-color: #131300;">
+        <img src="cards\back.png" alt="card back">
+      </div>
+      
+      <div class="back" style="background-color: #131300;">
+        <img src="cards\A.png" alt="card front">
+      </div>
+
+      <div class="side-right"></div>
+      <div class="side-left"></div>
+      <div class="side-top"></div>
+      <div class="side-bottom"></div>
+      
+    </div>
+  </div>
+
+
+  <div class="card" style="transform: rotate(0deg);">
+      <div class="inner">
+
+        <div class="face" style="background-color: #131300;">
+          <img src="cards\back.png" alt="card back">
+        </div>
+        
+        <div class="back" style="background-color: #131300;">
+          <img src="cards\3.png" alt="card front">
+        </div>
+
+        <div class="side-right"></div>
+        <div class="side-left"></div>
+        <div class="side-top"></div>
+        <div class="side-bottom"></div>
+        
+      </div>
+    </div>
+
+
+
+    <div class="card-hover" style="transform: rotate(7deg);">
+        <div class="inner" id="main">
+
+          <div class="face">
+            <div class="face-text">
+              <img src="cards\back.png" alt="card back">
+            </div>
+          </div>
+          
+          <div class="back">
+            <div class="back-text">
+              <img src="cards\K.png" alt="card front">
+            </div>
+          </div>
+
+          <div class="side-right"></div>
+          <div class="side-left"></div>
+          <div class="side-top"></div>
+          <div class="side-bottom"></div>
+          
+        </div>
+      </div>
+
+</body>
+
+<script>
+
+const isHover = e => e.parentElement.querySelector(':hover') === e;    
+
+const myDiv = document.getElementById('main');
+document.addEventListener('mousemove', function checkHover() {
+  const hovered = isHover(myDiv);
+  if (hovered !== checkHover.hovered) {
+    hovered ? animateOthers() : deAnimateOthers();
+    checkHover.hovered = hovered;
+  }
+});
+
+function animateOthers(){
+  var cards = document.getElementsByClassName('card');
+  for(let i = 0; i < cards.length; i++){
+    
+    var iners = cards[i].getElementsByClassName('inner');
+    iners[0].classList.add("inner-anim"+i);
+  }
+}
+
+function deAnimateOthers(){
+  var cards = document.getElementsByClassName('card');
+  for(let i = 0; i < cards.length; i++){
+    
+    var iners = cards[i].getElementsByClassName('inner');
+    iners[0].classList.remove("inner-anim"+i);
+  }
+}
+</script>
+
+</html>
