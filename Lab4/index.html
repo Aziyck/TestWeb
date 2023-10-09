@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<style>
+    *{
+	margin: 0;
+	padding:  0;
+	box-sizing: border-box;
+}
+
+body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background-color: #000;
+}
+
+
+div{
+	position: absolute;
+	height: 50px;
+	width: 100px;
+	border-radius: 100px;
+}
+
+.loader div{
+    background-color: palevioletred;
+}
+
+.loader{
+	position: absolute;
+	height: 0px;
+	width: 0px;
+	z-index: 10;
+}
+
+
+.loader  div:nth-child(1){
+    left: -250px;
+    animation: translate360Clock 3s -1.3s  forwards, translate360Clock 3s 5.0s forwards;
+    transform-origin: 0px;
+}
+.loader  div:nth-child(2){
+    left: -150px;
+    animation: translate180Clock 2s 0.2s  forwards, translate180ClockOrigin0 2s 4.2s  forwards;
+    transform-origin: 100px;
+}
+.loader  div:nth-child(3){
+    left: 50px;
+    animation: translate180AntiClock 2s 1.1s  forwards, translate180AntiClockOrigin0 2s 3.4s  forwards;
+    transform-origin: 100px;
+}
+.loader  div:nth-child(4){
+    left: 250px;
+    animation:  translate360AntiClock 3s  1.9s;
+    transform-origin: 100px;
+}
+
+
+@keyframes translate360Clock{
+	0%{
+		transform:rotate(0deg);
+	}
+	80%{
+		transform:rotate(380deg);	
+	}
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@keyframes translate180Clock{
+	0%{
+		transform:rotate(0deg);
+	}
+    80%{
+        transform: rotate(-200deg);
+    }
+	100%{
+		transform:rotate(-180deg);	
+	} 
+}
+@keyframes translate180AntiClock{
+	0%{
+		transform:rotate(0deg);
+	}
+    80%{
+        transform: rotate(200deg);
+    }
+	100%{
+		transform:rotate(180deg);	
+	} 
+}
+@keyframes translate360AntiClock{
+	0%{
+		transform:rotate(0deg);
+	}
+	80%{
+		transform:rotate(-380deg);	
+	}
+    100%{
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes translate180AntiClockOrigin0{
+	0%{
+		transform:rotate(0deg);
+        left: 150px;
+        transform-origin: 0px;
+	}
+    80%{
+        transform: rotate(200deg);
+        left: 150px;
+        transform-origin: 0px;
+    }
+	100%{
+		transform:rotate(180deg);	
+        left: 150px;
+        transform-origin: 0px;
+	} 
+}
+@keyframes translate180ClockOrigin0{
+	0%{
+		transform:rotate(0deg);
+        left: -50px;
+        transform-origin: 0px;
+	}
+    80%{
+        transform: rotate(-200deg);
+        left: -50px;
+        transform-origin: 0px;
+    }
+	100%{
+		transform:rotate(-180deg);	
+        left: -50px;
+        transform-origin: 0px;
+	} 
+}
+
+
+
+</style>
+
+<script>
+    function reset_animation() {
+        console.log("idk");
+        var divs = document.getElementsByClassName('a');
+        for(var i = 0; i < divs.length; i++){
+            var el = divs[i];
+            el.style.animation = 'none';
+            el.offsetHeight; /* trigger reflow */
+            el.style.animation = null; 
+        }
+        setTimeout(reset_animation, 6300)
+}
+</script>
+
+<body onload="reset_animation()">
+    <div class="loader">
+        <div class="a" name="anim1" id="anim"></div>
+		<div class="a" name="anim2" id="anim"></div>
+        <div class="a" name="anim3" id="anim"></div>
+        <div class="a" name="anim4" id="anim"></div>
+    </div>
+</body>
+</html>
