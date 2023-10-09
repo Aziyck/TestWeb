@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<style>
+    *{
+	margin: 0;
+	padding:  0;
+	box-sizing: border-box;
+}
+
+body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background-color: #fff;
+}
+
+
+div{
+	transform-origin: -1000%;
+	position: absolute;
+	height: 10px;
+	width: 10px;
+	border-radius: 50%;
+}
+
+.loader{
+    
+	position: relative;
+	height: 50px;
+	width: 50px;
+	
+	z-index: 10;
+}
+
+.loader  div:nth-child(1){
+	animation: translate1 1s  cubic-bezier(2,100000,2,-100000) infinite;
+	
+}
+
+.loader  div:nth-child(2){
+    animation: translate1 5s ease infinite;
+	animation-delay: -0.2s;
+}
+
+.loader  div:nth-child(3){
+    animation: translate1 5 ease infinite;
+	animation-delay: -0.4s;
+}
+
+.loader  div:nth-child(4){
+    animation: translate1 5s ease infinite;
+	animation-delay: -0.6s;
+}
+
+.loader  div:nth-child(5){
+    animation: translate1 5s ease infinite;
+	animation-delay: -0.8s;
+}
+
+.loader  div:nth-child(6){
+    animation: translate1 5s ease infinite;
+	animation-delay: -1s;
+}
+
+.loader  div:nth-child(7){
+    animation: translate1 5s ease infinite;
+	animation-delay: -1.2s;
+}
+
+.loader  div:nth-child(8){
+    animation: translate1 5s ease infinite;
+	animation-delay: -1.4s;
+}
+
+@keyframes translate1{
+	0%,5%{
+		transform:rotate(270deg);
+        background-color: blue;
+        
+	}
+	50%{
+		transform:rotate(450deg);
+		background-color: aqua;
+	} 
+	95%,100%{
+		transform:rotate(630deg);
+        background-color: blue;
+	}	
+}
+
+</style>
+
+<body>
+    <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    
+</body>
+</html>
