@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<style>
+    *{
+	margin: 0;
+	padding:  0;
+	box-sizing: border-box;
+}
+
+body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background-color: #72bbff;
+}
+
+
+div{
+    background-color: #f6f6f6;
+	position: absolute;
+	height: 100px;
+	width: 100px;
+}
+
+.loader{
+	position: absolute;
+	height: 0px;
+	width: 0px;
+	z-index: 10;
+}
+
+.loader div.square{
+    top: 100px;
+    animation: rotateSquare 2s -0.5s ease-out forwards infinite;
+}
+
+
+.loader  div.groud{
+    left: -200px;
+    bottom: -205px;
+    height: 5px;
+    width: 500px;
+    border-radius: 100px;
+    animation: moveGround 2s forwards infinite;
+}
+
+.loader div.clouds{
+    width: 200px;
+    height: 50px;
+    border-radius: 100px;
+    opacity: 50%;
+    animation: move 20s -6s ease-out forwards infinite;
+}
+
+.loader div.clouds1{
+    width: 200px;
+    height: 50px;
+    border-radius: 100px;
+    opacity: 50%;
+    animation: move 10s -2s ease-out forwards infinite;
+}
+
+.loader div.clouds2{
+    width: 200px;
+    height: 50px;
+    border-radius: 100px;
+    opacity: 50%;
+    animation: move 25s -9s ease-out forwards infinite;
+}
+
+.loader div.left{
+    height: 1000px;
+    width: 500px;
+    z-index: 100;
+    right: 200px;
+    top: -1000px;
+    background-color: #72bbff;
+}
+
+.loader div.right{
+    height: 1000px;
+    width: 500px;
+    z-index: 100;
+    right: -800px;
+    top: -1000px;
+    background-color: #72bbff;
+}
+
+
+
+@keyframes rotateSquare{
+	0%{
+		transform: rotate(0deg)  translateY(0px);
+	}
+	65%{
+		transform: rotate(45deg) translateY(-30px);
+	}
+    100%{
+        transform: rotate(90deg)  translateX(0px);
+    }
+}
+
+@keyframes moveGround{
+	0%{
+		transform:  translateY(0px);
+	}
+	40%{
+		transform:  translateY(0px);
+	}
+    75%{
+		transform:  translateY(7px);
+	}
+    80%{
+        transform:  translateY(0px);
+    }
+    100%{
+        transform:  translateY(0px);
+    }
+   
+}
+
+@keyframes move{
+	0%{
+		transform:  translateX(500px);
+	}
+    100%{
+        transform:  translateX(-500px);
+    }
+}
+
+</style>
+
+<!-- <script>
+    function reset_animation() {
+        console.log("idk");
+        var divs = document.getElementsByClassName('a');
+        for(var i = 0; i < divs.length; i++){
+            var el = divs[i];
+            el.style.animation = 'none';
+            el.offsetHeight; /* trigger reflow */
+            el.style.animation = null; 
+        }
+        setTimeout(reset_animation, 6300)
+}
+</script> -->
+
+<body onload="reset_animation()">
+    <div class="loader">
+        <div class="square"></div>
+        <div class="groud"></div>
+        <div class="clouds" style="right: 100px; top: -200px;"></div>
+        <div class="clouds1" style="right: -100px; top: -100px;"></div>
+        <div class="clouds2" style="right: -250px; top: -160px;"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+		<!-- <div class="a" name="anim2" id="anim"></div>
+        <div class="a" name="anim3" id="anim"></div>
+        <div class="a" name="anim4" id="anim"></div> -->
+    </div>
+</body>
+</html>
