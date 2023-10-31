@@ -3,12 +3,12 @@ console.clear();
 const typing = document.querySelectorAll('.typewriter');
 
 function randomOpacity() {
-  return (Math.floor(Math.random() * 70) + 50) / 100;
+  return (Math.floor(Math.random() * 80) + 55) / 100;
 }
 
 function randomEms() {
   if (Math.random() > 0.7) {
-    return (Math.floor(Math.random() * 100) - 50) / 650;
+    return (Math.floor(Math.random() * 100) - 50) / 800;
   } else {
     return 0;
   }
