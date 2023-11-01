@@ -3,7 +3,7 @@ console.clear();
 const typing = document.querySelectorAll('.typewriter');
 
 function randomOpacity() {
-  return (Math.floor(Math.random() * 80) + 55) / 100;
+  return (Math.floor(Math.random() * 80) + 65) / 100;
 }
 
 function randomEms() {
