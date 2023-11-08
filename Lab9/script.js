@@ -20,8 +20,11 @@ const mouse = {
 canvas.addEventListener('click', function(mouseclick){
     mouse.x = mouseclick.x;
     mouse.y = mouseclick.y;
-    for (let j = 0; j<10; j++){
-        particle.push(new Bubble);
+    for (let j = 0; j<getRandomArbitrary(5,20); j++){
+        let d = new Drop();
+        d.x = getRandomArbitrary(10, canvas.width);
+        d.y = getRandomArbitrary(10, canvas.height);
+        particle.push(d);
     }
 })
 
