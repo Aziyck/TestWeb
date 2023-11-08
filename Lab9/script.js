@@ -76,14 +76,14 @@ function couterRChange(){
         counterR--;
 }
 
-counterR = 1;
+counterR = 100;
 counterG = 1;
 counterB = 1;
 couter = 1;
 class Drop{
     constructor(){
-        this.x=mouse.x;
-        this.y=mouse.y;
+        this.x=mouse.x + getRandomArbitrary(-100,100);
+        this.y=mouse.y + getRandomArbitrary(-100,100);
         this.size=getRandomArbitrary(5,80);
         this.speedX=getRandomArbitrary(-0.2, 0.2);
         this.speedY=getRandomArbitrary(-0.3, 0.3);
@@ -97,7 +97,7 @@ class Drop{
     update(){
         this.x += this.speedX;
         this.y += this.speedY;
-        if(this.size>0.2) this.size -= 0.03;
+        if(this.size>0.2) this.size -= 0.2;
     }
     draw(){
         ctx.beginPath();
@@ -108,12 +108,12 @@ class Drop{
         // ctx.stroke();
         ctx.fillStyle = this.color;
         if (col == null || col == ""){
-            if(couter >= 1000){
+            if(couter >= 400){
                 couter = 1;
                 couterRChange();
             }
             couter++; 
-            if(counterR >= 256 || counterR <= 0) {c = !c};
+            if(counterR >= 200 || counterR <= 50) {c = !c};
         }
         ctx.fill();
         ctx.closePath();
