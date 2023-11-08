@@ -28,7 +28,7 @@ canvas.addEventListener('click', function(mouseclick){
 canvas.addEventListener('mousemove', function(mouseclick){
     mouse.x = mouseclick.x;
     mouse.y = mouseclick.y;
-    for (let j = 0; j<getRandomArbitrary(1,20); j++){
+    for (let j = 0; j<getRandomArbitrary(1,3); j++){
         particle.push(new Drop);
         // if(getRandomArbitrary(1,20) > 10){
         //     // particle.push(new Bubble);
@@ -69,24 +69,24 @@ class Bubble{
 let col = null;
 
 let c = true
-function couterBChange(){
+function couterRChange(){
     if(c == true)
-        counterB++;
+        counterR++;
     else
-        counterB--;
+        counterR--;
 }
 
-counterR = 0;
-counterG = 0;
-counterB = 255;
+counterR = 1;
+counterG = 1;
+counterB = 1;
 couter = 1;
 class Drop{
     constructor(){
         this.x=mouse.x;
         this.y=mouse.y;
-        this.size=getRandomArbitrary(3,8);
-        this.speedX=getRandomArbitrary(-0.05, 0.05);
-        this.speedY=getRandomArbitrary(0.4, 1);
+        this.size=getRandomArbitrary(5,80);
+        this.speedX=getRandomArbitrary(-0.2, 0.2);
+        this.speedY=getRandomArbitrary(-0.3, 0.3);
         // this.counter = 1000;
         if(col == null || col == ""){
             this.color = 'rgb('+ counterR + ',' + counterG + ','+ counterB+')';
@@ -97,23 +97,24 @@ class Drop{
     update(){
         this.x += this.speedX;
         this.y += this.speedY;
-        if(this.size>0.2) this.size -= 0.01;
+        if(this.size>0.2) this.size -= 0.03;
     }
     draw(){
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, Math.PI, Math.PI*2, true);
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+        // ctx.arc(this.x, this.y, this.size, Math.PI, Math.PI*2, true);
+        // ctx.lineTo(this.x, this.y-this.size*2);
+        // ctx.lineTo(this.x-this.size, this.y);
+        // ctx.stroke();
         ctx.fillStyle = this.color;
         if (col == null || col == ""){
             if(couter >= 1000){
                 couter = 1;
-                couterBChange();
+                couterRChange();
             }
             couter++; 
-            if(counterB >= 256 || counterB <= 0) {c = !c};
+            if(counterR >= 256 || counterR <= 0) {c = !c};
         }
-        ctx.lineTo(this.x, this.y-this.size*2);
-        ctx.lineTo(this.x-this.size, this.y);
-        // ctx.stroke();
         ctx.fill();
         ctx.closePath();
     }
