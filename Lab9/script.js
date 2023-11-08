@@ -28,12 +28,13 @@ canvas.addEventListener('click', function(mouseclick){
 canvas.addEventListener('mousemove', function(mouseclick){
     mouse.x = mouseclick.x;
     mouse.y = mouseclick.y;
-    for (let j = 0; j<2; j++){
-        if(getRandomArbitrary(1,20) > 10){
-            // particle.push(new Bubble);
-        }else{
-            particle.push(new Drop);
-        }
+    for (let j = 0; j<getRandomArbitrary(1,20); j++){
+        particle.push(new Drop);
+        // if(getRandomArbitrary(1,20) > 10){
+        //     // particle.push(new Bubble);
+        // }else{
+        //     particle.push(new Drop);
+        // }
             
     }
 })
@@ -67,16 +68,25 @@ class Bubble{
 // let col = window.prompt("Color: ");
 let col = null;
 
-counterR = 1;
-counterG = 1;
-counterB = 1;
+let c = true
+function couterBChange(){
+    if(c == true)
+        counterB++;
+    else
+        counterB--;
+}
+
+counterR = 0;
+counterG = 0;
+counterB = 255;
+couter = 1;
 class Drop{
     constructor(){
         this.x=mouse.x;
         this.y=mouse.y;
-        this.size=getRandomArbitrary(3,12);
-        this.speedX=getRandomArbitrary(-0.1, 0.1);
-        this.speedY=getRandomArbitrary(1, 3);
+        this.size=getRandomArbitrary(3,8);
+        this.speedX=getRandomArbitrary(-0.05, 0.05);
+        this.speedY=getRandomArbitrary(0.4, 1);
         // this.counter = 1000;
         if(col == null || col == ""){
             this.color = 'rgb('+ counterR + ',' + counterG + ','+ counterB+')';
@@ -92,14 +102,19 @@ class Drop{
     draw(){
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, Math.PI, Math.PI*2, true);
-        ctx.strokeStyle = this.color;
+        ctx.fillStyle = this.color;
         if (col == null || col == ""){
-            counterB += 1; 
-            if(counterB >= 255) counterB = 1;
+            if(couter >= 1000){
+                couter = 1;
+                couterBChange();
+            }
+            couter++; 
+            if(counterB >= 256 || counterB <= 0) {c = !c};
         }
         ctx.lineTo(this.x, this.y-this.size*2);
         ctx.lineTo(this.x-this.size, this.y);
-        ctx.stroke();
+        // ctx.stroke();
+        ctx.fill();
         ctx.closePath();
     }
 }
