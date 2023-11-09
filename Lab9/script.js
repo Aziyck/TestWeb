@@ -6,12 +6,12 @@ const MIN_PARTICLES_CREATED_ON_MOUSE_MOVEMENT = 1;
 const MAX_PARTICLES_CREATED_ON_MOUSE_MOVEMENT = 3;
 
 //the spawn reagion aground the mouse
-const SPREAD_X = 10;
-const SPREAD_Y = 10;
+const SPREAD_X = 20;
+const SPREAD_Y = 20;
 
 //size of circles
-const MIN_SIZE = 5;
-const MAX_SIZE = 100;
+const MIN_SIZE = 10;
+const MAX_SIZE = 70;
 
 //speed of spreading of cirles
 const SPEED_LEFT = 0.5;
@@ -100,6 +100,7 @@ class Shape{
         this.red = this.colourModify(this.red);
         this.color = 'rgb('+ this.red + ',' + this.green + ','+ this.blue +')';
     }
+
     draw(){
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
