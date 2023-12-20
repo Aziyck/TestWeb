@@ -1,0 +1,17 @@
+.circle{
+    position: relative;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: pink;
+}
+
+.circle:nth-child(1){
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+.circle:nth-child(2){
+    margin-top: 100px;
+    margin-left: 100px;
+}

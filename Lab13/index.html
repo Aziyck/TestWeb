@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="mask">
+        <svg class="wave" viewBox="0 0 1817 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="red" d="M 0 0 C 357 0 535.8 111 890 111 L 893 111 L 895 0 L 0 0 Z" stroke-width="0"></path> <path fill="red" d="M 890 111 C 1262 111 1447 0 1817 0 L 1817 0 L 1817 0 L 892 0 Z" stroke-width="0"></path> </svg>
+    </div>
+
+    
+    <div class="anim-container">
+        <svg viewBox="0 0 100 100" style="position: absolute;">
+            <mask id="myMask">
+                <rect x="0" y="0" width="100" height="100" fill="white" />
+                <circle cx="50" cy="50" r="20" fill="black"/>
+            </mask>
+
+            <rect x="0" y="0" width="100" height="100" fill="#17212e" mask="url(#myMask)" />
+      </svg>
+      
+    </div>
+    <div class="mask2"></div>
+    <div class="mask3"></div>
+    
+    <script src="node_modules/animejs/lib/anime.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

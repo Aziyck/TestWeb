@@ -1,0 +1,51 @@
+body{
+    background-color: #17212e;
+}
+
+.anim-container{
+    padding: 0;
+    margin: -10px;
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    background-color: transparent;
+    opacity: 1;
+}
+
+
+.mask{
+    margin-top: 150px;
+    margin-left: 100px;
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    border-radius: 0%;
+    background-color: red ;
+}
+.mask2{
+    margin-top: 400px;
+    margin-left: -10px;
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    border-radius: 0%;
+    background-color: #17212e ;
+}
+.mask3{
+    margin-top: -10px;
+    margin-left: 400px;
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    border-radius: 0%;
+    background-color: #17212e ;
+}
+
+.wave{
+    top: -86px;
+    left: -50px;
+    position: absolute;
+    height: 100px;
+    width: 700px;
+    border-radius: 0%;
+}
