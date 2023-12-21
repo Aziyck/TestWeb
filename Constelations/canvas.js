@@ -33,3 +33,20 @@ function resize(){
 
     console.log("resize: " + w + " : " + h + ".");
 }
+
+function dist(x1, y1, x2, y2) {
+    x2 -= x1; 
+    y2 -= y1;
+    return Math.sqrt((x2*x2) + (y2*y2));
+}
+
+function getRandom(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+Number.prototype.between = function(a, b) {
+    var min = Math.min.apply(Math, [a, b]),
+      max = Math.max.apply(Math, [a, b]);
+    return this > min && this < max;
+};
+  
