@@ -1,5 +1,5 @@
 //max number of particles that can exist one on screen
-MAX_NUMER_OF_ENTITIES = 500;
+MAX_NUMER_OF_ENTITIES = 200;
 
 //size of circles
 MIN_SIZE = 1;
@@ -7,14 +7,14 @@ MAX_SIZE = 2;
 
 //distance of lines
 MIN_DISTANCE = 10;
-MAX_DISTANCE = 100;
+MAX_DISTANCE = 150;
 
 //color
 BALL_COLOR = "white";
 LINE_COLOR = "white";
 
 //initial speed of spreading of shapes n >= MIN_SPEED_POSIBLE
-CONST_SPEED = 0.5;
+CONST_SPEED = 0.3;
 
 SPEED_LEFT = 0.5;
 SPEED_RIGHT = 0.5; 
@@ -45,7 +45,7 @@ RADIUS_AROUND_MOUSE = 150;
 SPEED_OF_DECAY_INCREASE_AROUD_MOUSE = 100;
 
 //atraction force around mouse (high number = low attraction) n >= 1
-ATTRACTION_FORCE = 3;
+ATTRACTION_FORCE = 20;
 
 //other global objects
 const shapeArray = [];
