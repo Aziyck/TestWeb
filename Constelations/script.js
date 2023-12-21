@@ -12,13 +12,18 @@ MAX_DISTANCE = 100;
 //color
 BALL_COLOR = "white";
 LINE_COLOR = "white";
-//initial speed of spreading of shapes
-CONST_SPEED = 1;
+
+//initial speed of spreading of shapes n >= MIN_SPEED_POSIBLE
+CONST_SPEED = 0.5;
+
 SPEED_LEFT = 0.5;
 SPEED_RIGHT = 0.5; 
 SPEED_UP = 0.5;
 SPEED_DOWN = 0.5; 
 
+MIN_SPEED_POSSIBLE = 0.1;
+
+//make CONST_SPEED to null for individualt speed to take effect
 if(CONST_SPEED != null){
     SPEED_LEFT = CONST_SPEED;
     SPEED_RIGHT = CONST_SPEED;
@@ -40,7 +45,7 @@ RADIUS_AROUND_MOUSE = 150;
 SPEED_OF_DECAY_INCREASE_AROUD_MOUSE = 100;
 
 //atraction force around mouse (high number = low attraction) n >= 1
-ATTRACTION_FORCE = 5;
+ATTRACTION_FORCE = 3;
 
 //other global objects
 const shapeArray = [];
@@ -70,11 +75,11 @@ window.addEventListener('click',
                 if(Math.sign(shapeArray[i].speedY) != Math.sign(shapeArray[i].dy)){
                     shapeArray[i].speedY = -shapeArray[i].speedY;
                 }
-                if(shapeArray[i].x.between(mouse.x+10, mouse.x-10)){
-                    shapeArray[i].x = 0;
+                if(shapeArray[i].x.between(mouse.x+20, mouse.x-20)){
+                    shapeArray[i].speedX = 0;
                 }
-                if(shapeArray[i].y.between(mouse.y+10, mouse.y-10)){
-                    shapeArray[i].y = 0;
+                if(shapeArray[i].y.between(mouse.y+20, mouse.y-20)){
+                    shapeArray[i].speedY = 0;
                 }
                 // shapeArray[i].speedX = shapeArray[i].dx / shapeArray.distance;
                 // shapeArray[i].speedY = shapeArray[i].dy / shapeArray.distance;
@@ -92,8 +97,10 @@ class Shape{
 
         this.size=getRandom(MIN_SIZE, MAX_SIZE);
 
-        this.speedX=getRandom(-SPEED_LEFT, SPEED_RIGHT);
-        this.speedY=getRandom(-SPEED_UP, SPEED_DOWN);
+            // this.speedX=getRandom(-SPEED_LEFT, SPEED_RIGHT);
+        this.speedX = getRandomArgument(getRandom(-SPEED_LEFT, -MIN_SPEED_POSSIBLE), getRandom(MIN_SPEED_POSSIBLE, SPEED_RIGHT));
+            // this.speedY=getRandom(-SPEED_UP, SPEED_DOWN);
+        this.speedY = getRandomArgument(getRandom(-SPEED_UP, -MIN_SPEED_POSSIBLE), getRandom(MIN_SPEED_POSSIBLE, SPEED_DOWN));
 
         this.color = BALL_COLOR;
         

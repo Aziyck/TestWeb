@@ -49,4 +49,9 @@ Number.prototype.between = function(a, b) {
       max = Math.max.apply(Math, [a, b]);
     return this > min && this < max;
 };
+
+function getRandomArgument(arg1, arg2) {
+    const randomIndex = Math.floor(Math.random() * 2);
+    return randomIndex === 0 ? arg1 : arg2;
+}
   
