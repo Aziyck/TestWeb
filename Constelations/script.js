@@ -1,12 +1,12 @@
-//max number of particles that can exist one on screen
-MAX_NUMER_OF_ENTITIES = 200;
+//max number of particles that can exist one on screen 
+MAX_NUMER_OF_ENTITIES = 250;
 
 //size of circles
 MIN_SIZE = 1;
 MAX_SIZE = 2;
 
 //distance of lines
-MIN_DISTANCE = 10;
+MIN_DISTANCE = 30;
 MAX_DISTANCE = 150;
 
 //color
@@ -21,7 +21,7 @@ SPEED_RIGHT = 0.5;
 SPEED_UP = 0.5;
 SPEED_DOWN = 0.5; 
 
-MIN_SPEED_POSSIBLE = 0.1;
+MIN_SPEED_POSSIBLE = 0.01;
 
 //make CONST_SPEED to null for individualt speed to take effect
 if(CONST_SPEED != null){
@@ -45,15 +45,31 @@ RADIUS_AROUND_MOUSE = 150;
 SPEED_OF_DECAY_INCREASE_AROUD_MOUSE = 100;
 
 //atraction force around mouse (high number = low attraction) n >= 1
-ATTRACTION_FORCE = 20;
+ATTRACTION_FORCE = 35;
+
+//maximum opacity of the regions created between shapes 0 < n < 1
+MAX_SHAPE_OPACITY = 0.75;
+
+//color of shapes of the geions as rgb values
+COLOR_OF_SHAPES = "255,255,255"; 
+
+//the glabal opacicity of the whole canvas 0 < n < 1
+GLOBAL_OPACITY_OF_SPAHES = 0.5;
 
 //other global objects
 const shapeArray = [];
 ctx = createCanvas("canvas1");
+ctx.globalAlpha = GLOBAL_OPACITY_OF_SPAHES;
 let mouse = {
 	x: null,
 	y: null
 }
+
+window.addEventListener('resize',
+    function(){
+        ctx.globalAlpha = GLOBAL_OPACITY_OF_SPAHES;
+    }
+)
 
 window.addEventListener('mousemove', 
 	function(event){
@@ -166,20 +182,39 @@ class Shape{
 }
 
 
-function drawConcetions(i){
+function drawConections(i){
     for (let j = i+1; j < shapeArray.length; j++) {
         shape1 = shapeArray[i];
         shape2 = shapeArray[j];
-        distance = dist(shape1.x, shape1.y, shape2.x, shape2.y);
+        distance_1_2 = dist(shape1.x, shape1.y, shape2.x, shape2.y);
 
-        if (distance <= shape2.lineLengh) {
+        //draw conections
+        if (distance_1_2 <= shape2.lineLengh) {
             ctx.beginPath();
                 ctx.strokeStyle = LINE_COLOR;
-                ctx.lineWidth = (1 - distance/shape2.lineLengh);
+                ctx.lineWidth = (1 - distance_1_2/shape2.lineLengh);
                 ctx.moveTo(shape1.x, shape1.y);
                 ctx.lineTo(shape2.x, shape2.y);
                 ctx.stroke();
             ctx.closePath();
+
+            //draw shapes in between 3 points
+            for(let t = j+1; t < shapeArray.length; t++){
+                shape3 = shapeArray[t];
+                distance_2_3 = dist(shape2.x, shape2.y, shape3.x, shape3.y);
+                distance_1_3 = dist(shape1.x, shape1.y, shape3.x, shape3.y);
+                if(distance_2_3 <= shape3.lineLengh && distance_1_3 <= shape3.lineLengh){
+                    ctx.beginPath();
+                        normalisedShapeOpacity = 1 - Math.max(distance_1_2/shape2.lineLengh, distance_2_3/shape3.lineLengh, distance_1_3/shape3.lineLengh);
+                        normalisedMaxShapeOpacity = 1 - MAX_SHAPE_OPACITY;
+                        ctx.fillStyle = "rgba("+ COLOR_OF_SHAPES +","+ (normalisedShapeOpacity - normalisedMaxShapeOpacity) +")";
+                        ctx.moveTo(shape1.x, shape1.y);
+                        ctx.lineTo(shape2.x, shape2.y);
+                        ctx.lineTo(shape3.x, shape3.y);
+                        ctx.fill();
+                    ctx.closePath();
+                }
+            }
         }
         
     }
@@ -191,7 +226,7 @@ function drawShapes(){
     for (let i = 0; i < shapeArray.length; i++) {
         shapeArray[i].update();
         shapeArray[i].draw();
-        drawConcetions(i);
+        drawConections(i);
 
         if (shapeArray[i].x >= w || shapeArray[i].x <= 0) {
             shapeArray[i].speedX = -shapeArray[i].speedX;
