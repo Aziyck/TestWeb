@@ -187,7 +187,7 @@ class Shape{
         try{        max_speed_of_decay = options.max_speed_of_decay;}
         catch(e){   max_speed_of_decay = MAX_SPEED_OF_DECAY}
 
-        this.speedOfDecay = getRandom(MIN_SPEED_OF_DECAY, MAX_SPEED_OF_DECAY);
+        this.speedOfDecay = getRandom(min_speed_of_decay, max_speed_of_decay);
     }
 
 
